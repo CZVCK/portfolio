@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>czvck.com — data engineering</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Syne:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+<body>
+<div class="site">
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">{ czvck.com }</div>
+    <div class="nav-links">
+      <a href="#projects">projects</a>
+      <a href="#skills">skills</a>
+      <a href="#about">about</a>
+      <a href="#contact">contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-eyebrow">data engineer</div>
+    <h1>Building pipelines<br>that move <em>data</em> forward.</h1>
+    <p class="hero-desc">
+      I design and deploy data infrastructure — ETL pipelines, network monitoring,
+      and automation systems running on self-hosted hardware.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">view projects</a>
+      <a href="#contact" class="btn btn-ghost">get in touch</a>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-row">
+    <div class="stat">
+      <div class="stat-label">projects deployed</div>
+      <div class="stat-value teal">1</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">pipeline host</div>
+      <div class="stat-value" style="font-size:18px; padding-top:4px;">Raspberry Pi 400</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">self-hosted</div>
+      <div class="stat-value teal">yes</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">more coming</div>
+      <div class="stat-value teal">soon</div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <section class="projects" id="projects">
+    <div class="section-head">
+      <span class="section-tag">work</span>
+      <span class="section-title">Projects</span>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="project-card featured">
+      <div class="card-top">
+        <div class="card-icon-wrap">
+          <svg viewBox="0 0 24 24">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-pinned">pinned</span>
+          <span class="badge badge-live">live</span>
+        </div>
+      </div>
+
+      <div class="card-title">Network Dashboard</div>
+      <div class="card-desc">
+        A live network monitoring tool running on a Raspberry Pi 400. Executes automated
+        speed tests and logs results over time — built as a foundation for broader
+        network diagnostics and home infrastructure monitoring.
+      </div>
+
+      <div class="dashboard-card">
+        <div class="card-header">
+          <h3>Network Performance</h3>
+        </div>
+        <canvas id="speedChart"></canvas>
+        <div class="card-footer">
+          <span class="updated">Auto-updates every 15 minutes</span>
+        </div>
+      </div>
+
+      <div class="card-detail">
+        <div class="card-detail-row">
+          <span class="detail-key">function</span>
+          <span class="detail-val teal">automated speed testing</span>
+        </div>
+        <div class="card-detail-row">
+          <span class="detail-key">hardware</span>
+          <span class="detail-val">Raspberry Pi 400</span>
+        </div>
+        <div class="card-detail-row">
+          <span class="detail-key">status</span>
+          <span class="detail-val teal">live — expanding</span>
+        </div>
+      </div>
+
+      <div class="card-tags">
+        <span class="tag">Python</span>
+        <span class="tag">speedtest-cli</span>
+        <span class="tag">Raspberry Pi</span>
+        <span class="tag">self-hosted</span>
+      </div>
+    </div>
+
+    <div class="projects-grid">
+      <div class="placeholder-card">// next project</div>
+      <div class="placeholder-card">// next project</div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills" id="skills">
+    <div class="section-head">
+      <span class="section-tag">stack</span>
+      <span class="section-title">Tools &amp; Technologies</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-label">languages</div>
+        <div class="skill-item">Python</div>
+        <div class="skill-item">SQL</div>
+        <div class="skill-item">Bash</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">data</div>
+        <div class="skill-item">Postgres</div>
+        <div class="skill-item">SQLite</div>
+        <div class="skill-item">Pandas</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">infra</div>
+        <div class="skill-item">Nginx</div>
+        <div class="skill-item">Raspberry Pi</div>
+        <div class="skill-item">DuckDNS</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">pipeline</div>
+        <div class="skill-item">cron / systemd</div>
+        <div class="skill-item">REST APIs</div>
+        <div class="skill-item">speedtest-cli</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-text">
+      <div class="section-head" style="margin-bottom:1rem;">
+        <span class="section-tag">about</span>
+        <span class="section-title">Who I am</span>
+      </div>
+      <p>
+        I build data pipelines and self-hosted infrastructure. My current setup runs
+        on a Raspberry Pi 400 — small hardware, real workloads.
+      </p>
+      <p>
+        I'm focused on practical systems that collect, move, and surface data in
+        useful ways. This site is itself hosted on the same Pi running my projects.
+      </p>
+    </div>
+    <div class="about-specs">
+      <div class="spec-row">
+        <span class="spec-key">hostname</span>
+        <span class="spec-val">czvck.com</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">hardware</span>
+        <span class="spec-val">Raspberry Pi 400</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">dns</span>
+        <span class="spec-val">DuckDNS</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">web server</span>
+        <span class="spec-val">Nginx</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">domain registrar</span>
+        <span class="spec-val">Squarespace</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">focus</span>
+        <span class="spec-val">data pipelines</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <div class="contact-bar" id="contact">
+    <div>
+      <div class="contact-label">get in touch</div>
+      <div class="contact-title">Interested in data infrastructure?</div>
+    </div>
+    <a href="mailto:you@czvck.com" class="btn btn-primary">send a message</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-left">© 2025 czvck.com — all rights reserved</div>
+    <div class="footer-right">hosted on raspberry pi 400</div>
+  </footer>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/assets/js/main.js"></script>
+</body>
+</html>
