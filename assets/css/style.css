@@ -370,6 +370,11 @@ nav {
   gap: 12px;
 }
 
+#speedChart {
+  width: 100% !important;
+  height: 250px !important;
+}
+
 .card-header h3 {
   margin: 0;
   font-size: 1.1rem;

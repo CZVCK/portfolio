@@ -43,6 +43,7 @@ async function loadChart() {
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       interaction: { mode: 'index', intersect: false },
       plugins: {
         legend: { labels: { color: '#ccc', boxWidth: 12 } }
