@@ -1,12 +1,12 @@
 async function loadChart() {
   const res = await fetch('/api/speedtest');
   const data = await res.json();
-
+// date labels
   const labels = data.map(r => {
     const d = new Date(r.timestamp);
     return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
   });
-
+// prevents duplicate charts
   const existing = Chart.getChart('speedChart');
   if (existing) existing.destroy();
 
@@ -20,24 +20,24 @@ async function loadChart() {
           data: data.map(r => r.download_mbps),
           borderColor: '#00ff99',
           backgroundColor: 'rgba(0, 255, 153, 0.05)',
-          tension: 0.3,
-          pointRadius: 3
+          tension: 0.25,
+          pointRadius: 0
         },
         {
           label: 'Upload (Mbps)',
           data: data.map(r => r.upload_mbps),
           borderColor: '#00aaff',
           backgroundColor: 'rgba(0, 170, 255, 0.05)',
-          tension: 0.3,
-          pointRadius: 3
+          tension: 0.25,
+          pointRadius: 0
         },
         {
           label: 'Ping (ms)',
           data: data.map(r => r.ping_ms),
           borderColor: '#ff6666',
           backgroundColor: 'rgba(255, 102, 102, 0.05)',
-          tension: 0.3,
-          pointRadius: 3
+          tension: 0.25,
+          pointRadius: 0
         }
       ]
     },
