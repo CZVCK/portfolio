@@ -1,66 +1,113 @@
-async function loadChart() {
-  const res = await fetch('/api/speedtest');
-  const data = await res.json();
-// date labels
-  const labels = data.map(r => {
-    const d = new Date(r.timestamp);
-    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
-  });
-// prevents duplicate charts
-  const existing = Chart.getChart('speedChart');
-  if (existing) existing.destroy();
+document.addEventListener('DOMContentLoaded', function() {
 
-  new Chart(document.getElementById('speedChart'), {
-    type: 'line',
-    data: {
-      labels,
-      datasets: [
-        {
-          label: 'Download (Mbps)',
-          data: data.map(r => r.download_mbps),
-          borderColor: '#00ff99',
-          backgroundColor: 'rgba(0, 255, 153, 0.05)',
-          tension: 0.25,
-          pointRadius: 0
-        },
-        {
-          label: 'Upload (Mbps)',
-          data: data.map(r => r.upload_mbps),
-          borderColor: '#00aaff',
-          backgroundColor: 'rgba(0, 170, 255, 0.05)',
-          tension: 0.25,
-          pointRadius: 0
-        },
-        {
-          label: 'Ping (ms)',
-          data: data.map(r => r.ping_ms),
-          borderColor: '#ff6666',
-          backgroundColor: 'rgba(255, 102, 102, 0.05)',
-          tension: 0.25,
-          pointRadius: 0
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      interaction: { mode: 'index', intersect: false },
-      plugins: {
-        legend: { labels: { color: '#ccc', boxWidth: 12 } }
+  async function loadChart() {
+    const res = await fetch('/api/speedtest');
+    const data = await res.json();
+    const labels = data.map(r => {
+      const d = new Date(r.timestamp);
+      return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+    });
+    const existing = Chart.getChart('speedChart');
+    if (existing) existing.destroy();
+
+    new Chart(document.getElementById('speedChart'), {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [
+          {
+            label: 'Download (Mbps)',
+            data: data.map(r => r.download_mbps),
+            borderColor: '#00ff99',
+            backgroundColor: 'rgba(0, 255, 153, 0.05)',
+            tension: 0.25,
+            pointRadius: 0
+          },
+          {
+            label: 'Upload (Mbps)',
+            data: data.map(r => r.upload_mbps),
+            borderColor: '#00aaff',
+            backgroundColor: 'rgba(0, 170, 255, 0.05)',
+            tension: 0.25,
+            pointRadius: 0
+          },
+          {
+            label: 'Ping (ms)',
+            data: data.map(r => r.ping_ms),
+            borderColor: '#ff6666',
+            backgroundColor: 'rgba(255, 102, 102, 0.05)',
+            tension: 0.25,
+            pointRadius: 0
+          }
+        ]
       },
-      scales: {
-        x: {
-          ticks: { color: '#888', maxRotation: 45, maxTicksLimit: 8 },
-          grid: { color: 'rgba(255,255,255,0.05)' }
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+          legend: { labels: { color: '#ccc', boxWidth: 12 } }
         },
-        y: {
-          ticks: { color: '#888' },
-          grid: { color: 'rgba(255,255,255,0.05)' }
+        scales: {
+          x: {
+            ticks: { color: '#888', maxRotation: 45, maxTicksLimit: 8 },
+            grid: { color: 'rgba(255,255,255,0.05)' }
+          },
+          y: {
+            ticks: { color: '#888' },
+            grid: { color: 'rgba(255,255,255,0.05)' }
+          }
         }
       }
+    });
+  }
+
+  loadChart();
+  setInterval(loadChart, 15 * 60 * 1000);
+
+  document.getElementById('contact-submit').addEventListener('click', async () => {
+    const name = document.getElementById('contact-name').value.trim();
+    const email = document.getElementById('contact-email').value.trim();
+    const message = document.getElementById('contact-message').value.trim();
+    const website = document.getElementById('contact-website').value;
+    const status = document.getElementById('contact-status');
+    const button = document.getElementById('contact-submit');
+
+    if (!name || !email || !message) {
+      status.textContent = '[ERROR] all fields required.';
+      status.className = 'contact-status error';
+      return;
+    }
+
+    button.disabled = true;
+    button.textContent = 'sending...';
+
+    try {
+      const response = await fetch('https://work.czvck.com/contact/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message, website })
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        status.textContent = '[SUCCESS] message transmitted.';
+        status.className = 'contact-status success';
+        document.getElementById('contact-name').value = '';
+        document.getElementById('contact-email').value = '';
+        document.getElementById('contact-message').value = '';
+      } else {
+        status.textContent = data.error || '[ERROR] transmission failed.';
+        status.className = 'contact-status error';
+      }
+    } catch (err) {
+      status.textContent = '[OFFLINE] could not reach server. try again later.';
+      status.className = 'contact-status error';
+    } finally {
+      button.disabled = false;
+      button.textContent = 'send message';
     }
   });
-}
 
-loadChart();
-setInterval(loadChart, 15 * 60 * 1000);
+}); // end DOMContentLoaded
