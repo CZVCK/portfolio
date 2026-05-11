@@ -322,6 +322,7 @@ nav {
 .detail-key { color: var(--dim); }
 .detail-val { color: var(--text); }
 .detail-val.teal { color: var(--teal); }
+.teal { color: var(--teal); }
 
 .card-tags { display: flex; gap: 8px; flex-wrap: wrap; }
 
@@ -533,6 +534,19 @@ footer {
 
 .footer-left { font-family: var(--mono); font-size: 11px; color: var(--dim); }
 .footer-right { font-family: var(--mono); font-size: 11px; color: var(--teal); }
+
+.footer-links { display: flex; gap: 1.5rem; }
+
+.footer-links a {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--teal); }
 
 /* ANIMATIONS */
 @keyframes fadeUp {
