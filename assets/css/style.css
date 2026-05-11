@@ -152,38 +152,6 @@ nav {
 
 .btn-ghost:hover { color: var(--text); border-color: var(--muted); }
 
-/* STATS */
-.stats-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  overflow: hidden;
-  margin-bottom: 5rem;
-}
-
-.stat { background: var(--bg2); padding: 1.5rem; }
-
-.stat-label {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--dim);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-
-.stat-value {
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--text);
-  line-height: 1;
-}
-
-.stat-value.teal { color: var(--teal); }
-.stat-unit { font-size: 14px; color: var(--muted); margin-left: 2px; }
 
 /* SECTION HEADING */
 .section-head {
@@ -361,8 +329,8 @@ nav {
 
 /* DASHBOARD CARD */
 .dashboard-card {
-  background: #111;
-  border: 1px solid #222;
+  background: var(--bg2);
+  border: 1px solid var(--border);
   border-radius: 12px;
   padding: 16px;
   width: 100%;
@@ -390,51 +358,15 @@ nav {
   text-align: right;
 }
 
-/* SKILLS */
-.skills { margin-bottom: 5rem; }
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1rem;
+.mtg-embed {
+  width: 100%;
+  height: 380px;
+  border: none;
+  border-radius: 6px;
+  margin: 1rem 0;
+  display: block;
 }
 
-.skill-group {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 1.25rem;
-}
-
-.skill-group-label {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--teal);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--border);
-}
-
-.skill-item {
-  font-family: var(--mono);
-  font-size: 13px;
-  color: var(--muted);
-  padding: 5px 0;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.skill-item::before {
-  content: '';
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--teal);
-  flex-shrink: 0;
-}
 
 /* ABOUT */
 .about {
@@ -555,10 +487,8 @@ footer {
 }
 
 .hero        { animation: fadeUp 0.5s ease both; }
-.stats-row   { animation: fadeUp 0.5s 0.1s ease both; }
-.projects    { animation: fadeUp 0.5s 0.15s ease both; }
-.skills      { animation: fadeUp 0.5s 0.2s ease both; }
-.about       { animation: fadeUp 0.5s 0.25s ease both; }
+.projects    { animation: fadeUp 0.5s 0.1s ease both; }
+.about       { animation: fadeUp 0.5s 0.2s ease both; }
 .contact-bar { animation: fadeUp 0.5s 0.3s ease both; }
 
 /* MOBILE */
