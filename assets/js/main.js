@@ -13,6 +13,11 @@ document.addEventListener('DOMContentLoaded', function() {
       const existing = Chart.getChart('speedChart');
       if (existing) existing.destroy();
 
+      const style = getComputedStyle(document.documentElement);
+      const colorTeal   = style.getPropertyValue('--teal').trim();
+      const colorUpload = style.getPropertyValue('--chart-upload').trim();
+      const colorPing   = style.getPropertyValue('--chart-ping').trim();
+
       new Chart(document.getElementById('speedChart'), {
         type: 'line',
         data: {
@@ -21,24 +26,24 @@ document.addEventListener('DOMContentLoaded', function() {
             {
               label: 'Download (Mbps)',
               data: data.map(r => r.download_mbps),
-              borderColor: '#1D9E75',
-              backgroundColor: 'rgba(29, 158, 117, 0.08)',
+              borderColor: colorTeal,
+              backgroundColor: colorTeal + '14',
               tension: 0.25,
               pointRadius: 0
             },
             {
               label: 'Upload (Mbps)',
               data: data.map(r => r.upload_mbps),
-              borderColor: '#4a9eff',
-              backgroundColor: 'rgba(74, 158, 255, 0.08)',
+              borderColor: colorUpload,
+              backgroundColor: colorUpload + '14',
               tension: 0.25,
               pointRadius: 0
             },
             {
               label: 'Ping (ms)',
               data: data.map(r => r.ping_ms),
-              borderColor: '#ff6666',
-              backgroundColor: 'rgba(255, 102, 102, 0.05)',
+              borderColor: colorPing,
+              backgroundColor: colorPing + '0d',
               tension: 0.25,
               pointRadius: 0
             }

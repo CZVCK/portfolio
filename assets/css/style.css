@@ -1,17 +1,20 @@
 :root {
-  --bg:       #0d0f0e;
-  --bg2:      #131614;
-  --bg3:      #1a1d1b;
-  --border:   rgba(255,255,255,0.07);
-  --border2:  rgba(255,255,255,0.12);
-  --teal:     #1D9E75;
-  --teal-dim: #0F6E56;
-  --teal-glow:#1D9E7533;
-  --text:     #e8ece9;
-  --muted:    #8a9490;
-  --dim:      #4a5550;
-  --mono:     'JetBrains Mono', monospace;
-  --sans:     'Syne', sans-serif;
+  --bg:           #0d0f0e;
+  --bg2:          #131614;
+  --bg3:          #1a1d1b;
+  --border:       rgba(255,255,255,0.07);
+  --border2:      rgba(255,255,255,0.12);
+  --teal:         #1D9E75;
+  --teal-hover:   #24c490;
+  --teal-dim:     #0F6E56;
+  --teal-glow:    #1D9E7533;
+  --text:         #e8ece9;
+  --muted:        #8a9490;
+  --dim:          #4a5550;
+  --chart-upload: #4a9eff;
+  --chart-ping:   #ff6666;
+  --mono:         'JetBrains Mono', monospace;
+  --sans:         'Syne', sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -142,7 +145,7 @@ nav {
   border: 1px solid var(--teal);
 }
 
-.btn-primary:hover { background: #24c490; border-color: #24c490; }
+.btn-primary:hover { background: var(--teal-hover); border-color: var(--teal-hover); }
 
 .btn-ghost {
   background: transparent;
@@ -349,12 +352,12 @@ nav {
   margin: 0;
   font-size: 1.1rem;
   font-weight: 600;
-  color: #eee;
+  color: var(--text);
 }
 
 .card-footer {
   font-size: 0.8rem;
-  color: #888;
+  color: var(--muted);
   text-align: right;
 }
 
@@ -375,13 +378,6 @@ nav {
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
   align-items: start;
-}
-
-.about-text h2 {
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 1rem;
 }
 
 .about-text p {
@@ -498,8 +494,19 @@ footer {
 
 @media (max-width: 600px) {
   .nav-links { gap: 1.2rem; }
-  .stats-row { grid-template-columns: 1fr 1fr; }
 }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* CONTACT FORM */
 .contact-form-wrap {
   display: flex;
