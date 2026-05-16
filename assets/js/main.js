@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', function() {
       const colorTeal   = style.getPropertyValue('--teal').trim();
       const colorUpload = style.getPropertyValue('--chart-upload').trim();
       const colorPing   = style.getPropertyValue('--chart-ping').trim();
+      const colorMuted  = style.getPropertyValue('--muted').trim();
+      const colorText   = style.getPropertyValue('--text').trim();
 
       new Chart(document.getElementById('speedChart'), {
         type: 'line',
@@ -54,15 +56,15 @@ document.addEventListener('DOMContentLoaded', function() {
           maintainAspectRatio: false,
           interaction: { mode: 'index', intersect: false },
           plugins: {
-            legend: { labels: { color: '#ccc', boxWidth: 12 } }
+            legend: { labels: { color: colorText, boxWidth: 12 } }
           },
           scales: {
             x: {
-              ticks: { color: '#888', maxRotation: 45, maxTicksLimit: 8 },
+              ticks: { color: colorMuted, maxRotation: 45, maxTicksLimit: 8 },
               grid: { color: 'rgba(255,255,255,0.05)' }
             },
             y: {
-              ticks: { color: '#888' },
+              ticks: { color: colorMuted },
               grid: { color: 'rgba(255,255,255,0.05)' }
             }
           }

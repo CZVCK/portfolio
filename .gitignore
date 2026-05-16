@@ -2,3 +2,4 @@ node_modules/
 panel.png
 *.log
 .env
+CLAUDE.md
