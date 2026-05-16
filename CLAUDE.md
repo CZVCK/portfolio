@@ -33,7 +33,7 @@ There are no lint, test, or type-check commands configured.
 - `GET /api/speedtest` — returns JSON array of `{timestamp, download, upload, ping}` readings
 - `POST /contact/` — handles contact form submissions
 
-**MTG Price Oracle** project card embeds an iframe from a separate ECharts-based service (also self-hosted).
+**Uinta Basin Air Quality** project card embeds an iframe from `https://air.czvck.com` — a separate Plotly.js-based service hosted on AWS EC2. Styled via `.aqi-embed` in `style.css`.
 
 ## Styling Conventions
 
